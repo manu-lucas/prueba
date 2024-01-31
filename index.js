@@ -1,11 +1,16 @@
-const express = require('express')
-const app = express()
-const port = 3001
+const express = require('express');
+const app = express();
+const port = 3000;
 
+// Configura el middleware para servir archivos estáticos desde la carpeta 'public'
+app.use(express.static('public'));
+
+// Ruta principal que sirve tu archivo HTML
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+    res.sendFile(__dirname + '/public/index.html');
+});
 
+// Inicia el servidor
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+    console.log(`Servidor Express ejecutándose en http://localhost:${port}`);
+});
